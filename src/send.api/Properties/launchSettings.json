@@ -1,0 +1,39 @@
+﻿{
+  "$schema": "https://json.schemastore.org/launchsettings.json",
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:14474",
+      "sslPort": 44329
+    }
+  },
+  "profiles": {
+    "send.api": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "applicationUrl": "https://localhost:7284;http://localhost:5189",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "JWT_ISSUER_KEYCLOAK": "****",
+        "DB_CONNECTION": "****",
+        "REDIS": "******",
+        "REDIS_BASE_KEY": "Send-",
+        "REDIS_DELAY_TIME_OUT": "2", //Second
+        "LOG_FILE_BASE_PATH": "./logs/",
+        "PUBLIC-KEY-PATH": "/Shared/Authentication/Docs/Keycloak/DEV/public-keycloak.xml",
+        "RESOURCE_ACCESS": "****n" // to be change
+      }
+    },
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}
