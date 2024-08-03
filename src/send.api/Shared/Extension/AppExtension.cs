@@ -18,6 +18,8 @@ namespace send.api.Shared.Extension
 
                 options.Serializer.Options.PropertyNamingPolicy = new SnakeCaseNamingPolicy();
 
+                options.Binding.ValueParserFor<Guid>(x => new(Guid.TryParse(x?.ToString(), out var res), res));
+
                 options.Endpoints.RoutePrefix = subRoute;
                 options.Endpoints.ShortNames = false;
                 options.Endpoints.PrefixNameWithFirstTag = true;

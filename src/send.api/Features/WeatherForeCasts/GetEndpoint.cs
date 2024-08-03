@@ -19,7 +19,7 @@ namespace send.api.Features.WeatherForeCasts
 
         public override void Configure()
         {
-            Get("weatherforecast");
+            Get("WeatherForecast");
             Version(1);
             Summary(s =>
             {

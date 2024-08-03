@@ -23,10 +23,9 @@ namespace send.api.Shared.Extension
                                     s.Title = "Send API";
                                     s.Version = "v1.0";
                                 };
-                            o.TagCase = TagCase.TitleCase;
-                            o.TagStripSymbols = true;
-                            o.RemoveEmptyRequestSchema = false;
                             o.MaxEndpointVersion = 1;
+                            o.RemoveEmptyRequestSchema = false;
+                            o.TagStripSymbols = true;
                         });
 
             #region use this if new version has added

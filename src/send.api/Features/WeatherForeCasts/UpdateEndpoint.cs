@@ -6,7 +6,8 @@ namespace send.api.Features.WeatherForeCasts
     {
         public override void Configure()
         {
-            Put("weatherforecast/{id}");
+            Put("WeatherForecast/{id}");
+            Version(1);
             Summary(s =>
             {
                 s.Summary = "Returns the current weather forecast";
