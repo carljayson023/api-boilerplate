@@ -374,3 +374,8 @@ src/BoilerPlate.Test/bin
 src/BoilerPlate.Test/obj
 src/Send_API/obj
 /src/send.api/logs/Send-API_20240801.json
+/src/send.api/obj/Debug/net6.0/ref/send.api.dll
+/src/send.api/obj/Debug/net6.0/send.api.csproj.FileListAbsolute.txt
+/src/send.api/obj/Debug/net6.0/send.api.dll
+/src/send.api/obj/Debug/net6.0/send.api.pdb
+/src/send.api/obj/Debug/net6.0/refint/send.api.dll
