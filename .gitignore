@@ -17,6 +17,7 @@
 mono_crash.*
 
 # Build results
+[Ll]ogs/
 [Dd]ebug/
 [Dd]ebugPublic/
 [Rr]elease/
@@ -373,3 +374,4 @@ FodyWeavers.xsd
 src/BoilerPlate.Test/bin
 src/BoilerPlate.Test/obj
 src/Send_API/obj
+/src/send.api/logs/Send-API_20240801.json
