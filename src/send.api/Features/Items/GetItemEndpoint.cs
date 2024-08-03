@@ -7,7 +7,7 @@ namespace send.api.Features.Items
         public override void Configure()
         {
             Verbs(Http.GET);
-            Routes("items");
+            Routes("items/v1/item");
             Summary(s =>
             {
                 s.Summary = "Returns the current Items item";

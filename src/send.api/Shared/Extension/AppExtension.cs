@@ -29,8 +29,8 @@ namespace send.api.Shared.Extension
                             ep.Description(b => b.Produces<ErrorResponse>(400, "application/problem+json"));
                     };
 
-                options.Versioning.Prefix = "";
-
+                options.Versioning.Prefix = "v";
+                options.Versioning.PrependToRoute = true;
                 options.Throttle.HeaderName = "X-Custom-Throttle-Header";
                 options.Throttle.Message = "Custom Error Response";
             }).UseSwaggerGen();

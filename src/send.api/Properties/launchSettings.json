@@ -17,14 +17,14 @@
       "applicationUrl": "https://localhost:7284;http://localhost:5189",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "JWT_ISSUER_KEYCLOAK": "****",
-        "DB_CONNECTION": "****",
-        "REDIS": "******",
+        "JWT_ISSUER_KEYCLOAK": "https://dev.ppspepp.com/auth/realms/Development",
+        "DB_CONNECTION": "Server=10.217.129.41;Port=3309;Uid=PD2045D;Pwd=N8h@R+Ia80i5;Database=pps_remittance_payout",
+        "REDIS": "MR402S0217D.palawanpawnshop.com:16379,password=49b4b94095dd1618afe15cde104e69a6fd0168f81fc4b49f06b81f5e1c5d21d1,abortConnect=false",
         "REDIS_BASE_KEY": "Send-",
         "REDIS_DELAY_TIME_OUT": "2", //Second
         "LOG_FILE_BASE_PATH": "./logs/",
         "PUBLIC-KEY-PATH": "/Shared/Authentication/Docs/Keycloak/DEV/public-keycloak.xml",
-        "RESOURCE_ACCESS": "****n" // to be change
+        "RESOURCE_ACCESS": "send-api-transaction" // to be change
       }
     },
     "IIS Express": {
