@@ -380,3 +380,4 @@ src/Send_API/obj
 /src/send.api/obj/Debug/net6.0/send.api.pdb
 /src/send.api/obj/Debug/net6.0/refint/send.api.dll
 /src/send.api/Properties/launchSettings.json
+/src/send.api/obj/Debug/net6.0/send.api.csproj.CoreCompileInputs.cache
