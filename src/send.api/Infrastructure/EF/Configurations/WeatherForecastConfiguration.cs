@@ -7,11 +7,11 @@ namespace send.api.Infrastructure.EF.Configurations
     /// <summary>
     /// Db table configuration: setup the name and attribute/properties of table
     /// </summary>
-    public class FinancialAdjustmentConfiguration : IEntityTypeConfiguration<WeatherForeCast>
+    public class WeatherForecastConfiguration : IEntityTypeConfiguration<WeatherForeCast>
     {
         public void Configure(EntityTypeBuilder<WeatherForeCast> builder)
         {
-            builder.ToTable("<name of table>").HasKey(type => type.Id);
+            builder.ToTable("weather_foreCasts").HasKey(type => type.Id);
 
             builder.Property(type => type.Date).HasColumnName("id");
             builder.Property(type => type.TemperatureC).HasColumnName("TemperatureC");

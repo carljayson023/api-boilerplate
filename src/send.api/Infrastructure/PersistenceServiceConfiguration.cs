@@ -1,5 +1,7 @@
 ﻿using System.Data.Common;
 using System.Data;
+using send.api.Infrastructure.EF;
+using Microsoft.EntityFrameworkCore;
 
 namespace send.api.Infrastructure
 {
@@ -11,8 +13,8 @@ namespace send.api.Infrastructure
         /// <param name="services"> Service Collection </param>
         public static void AddPersistenceInfrastructure(this IServiceCollection services)
         {
-            string dbConnection = Environment.GetEnvironmentVariable("DB_CONNECTION");
-            string intPayoutDb = Environment.GetEnvironmentVariable("IR_API_DB_CONNECTION");
+            //string dbConnection = Environment.GetEnvironmentVariable("DB_CONNECTION");
+            string sendApiConnectionString = Environment.GetEnvironmentVariable("DB_CONNECTION");
 
             //Dapper PEPP Main DB
             //services.AddTransient<DbConnection>(_ => new MySqlConnection(peppMainServerDb));
@@ -23,8 +25,8 @@ namespace send.api.Infrastructure
             //services.AddTransient<IIntPayoutContext, IntPayoutContext>();
 
             //EF
-            //services.AddTransient<IIntPayoutDbContext, IntPayoutDbContext>();
-            //services.AddDbContext<IntPayoutDbContext>(options => options.UseMySql(intPayoutDb, ServerVersion.AutoDetect(intPayoutDb)));
+            //services.AddTransient<ISendDbContext, SendDbContext>();
+            //services.AddDbContext<SendDbContext>(options => options.UseMySql(sendApiConnectionString, ServerVersion.AutoDetect(sendApiConnectionString)));
 
         }
     }

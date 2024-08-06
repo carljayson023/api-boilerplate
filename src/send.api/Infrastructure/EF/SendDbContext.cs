@@ -14,7 +14,7 @@ namespace send.api.Infrastructure.EF
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.ApplyConfiguration(new FinancialAdjustmentConfiguration());
+            builder.ApplyConfiguration(new WeatherForecastConfiguration());
             base.OnModelCreating(builder);
         }
     }
