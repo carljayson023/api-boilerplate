@@ -28,6 +28,7 @@ namespace send.api.Features.Items
                 Summary = "Sunny"
             };
 
+             //throw new Exception("hre++++++");
             await SendAsync(response);
         }
 

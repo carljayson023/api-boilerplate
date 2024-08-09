@@ -5,6 +5,7 @@ using FastEndpoints.Swagger;
 using send.api.ServiceManager;
 using Serilog.Formatting.Compact;
 using Serilog;
+using Serilog.Extensions.Logging;
 
 namespace send.api.Shared.Extension
 {
@@ -82,9 +83,10 @@ namespace send.api.Shared.Extension
             services.AddTransient<IWeatherForeCastsService, WeatherForeCastsService>();
         }
 
-        public static void AddSerilogConfiguration(this IServiceCollection services)
+        public static void AddSerilogConfiguration(this IServiceCollection services, IConfiguration configurationbuilder)
         {
             // Configure Serilog
+
             Log.Logger = new LoggerConfiguration()
                 .WriteTo.File(
                     new RenderedCompactJsonFormatter(),
@@ -96,7 +98,28 @@ namespace send.api.Shared.Extension
                     flushToDiskInterval: TimeSpan.FromSeconds(1),
                     rollOnFileSizeLimit: true
                 )
+                .ReadFrom.Configuration(configurationbuilder)
                 .CreateLogger();
+        }
+
+        public static void AddElkConfiguration(this WebApplicationBuilder builder)
+        {
+            var logger = new LoggerConfiguration()
+              .ReadFrom.Configuration(builder.Configuration)
+              .Enrich.FromLogContext()
+              .WriteTo.Console(new CompactJsonFormatter())
+              .WriteTo.Elasticsearch(new Serilog.Sinks.Elasticsearch.ElasticsearchSinkOptions(new Uri("http://localhost:9200"))
+              {
+                  AutoRegisterTemplate = true,
+              })
+              .CreateLogger();
+
+            logger.Information("Starting send api");
+
+            builder.Host.UseSerilog(logger);
+            var microsoftLogger = new SerilogLoggerFactory(logger)
+                .CreateLogger<Program>();
+
         }
     }
 }

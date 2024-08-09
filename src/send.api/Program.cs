@@ -9,7 +9,12 @@ var builder = WebApplication.CreateBuilder(args);
 try
 {
     // Add services to the container
-    builder.Services.AddSerilogConfiguration();
+
+    var configurationbuilder = new ConfigurationBuilder()
+                   .AddJsonFile("appsettings.json")
+                   .Build();
+    builder.Services.AddSerilogConfiguration(configurationbuilder);
+    //builder.AddElkConfiguration(); // using serilog and ELK
     builder.Services.AddFastEndpointConfiguration();
     builder.Services.AddPersistenceInfrastructure();
     builder.Services.AddDependencyInjection();
