@@ -4,6 +4,7 @@ using send.api.Shared.Exceptions;
 using send.api.Shared.Extension;
 using Serilog;
 using Serilog.Formatting.Compact;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 try
@@ -19,11 +20,13 @@ try
     builder.Services.AddPersistenceInfrastructure();
     builder.Services.AddDependencyInjection();
     builder.Services.AddAutoMapper(typeof(Program).Assembly);
+    builder.Services.AddValidators(Assembly.GetExecutingAssembly()); // this will handle the validation behavior
 
     ConfigurationManager configuration = builder.Configuration;
     builder.Services.AddOAuth2(configuration);
 
     builder.Host.UseSerilog();
+
 
     var app = builder.Build();
 

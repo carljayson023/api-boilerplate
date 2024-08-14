@@ -6,6 +6,8 @@ using send.api.ServiceManager;
 using Serilog.Formatting.Compact;
 using Serilog;
 using Serilog.Extensions.Logging;
+using FluentValidation;
+using System.Reflection;
 
 namespace send.api.Shared.Extension
 {
@@ -21,7 +23,7 @@ namespace send.api.Shared.Extension
                                 s =>
                                 {
                                     s.DocumentName = "Release 1.0";
-                                    s.Title = "Send API";
+                                    s.Title = "Boilerplate API";
                                     s.Version = "v1.0";
                                 };
                             o.MaxEndpointVersion = 1;
@@ -81,6 +83,28 @@ namespace send.api.Shared.Extension
         public static void AddDependencyInjection(this IServiceCollection services)
         {
             services.AddTransient<IWeatherForeCastsService, WeatherForeCastsService>();
+        }
+
+        public static IServiceCollection AddValidators(this IServiceCollection services, Assembly assembly)
+        {
+            var validatorType = typeof(IValidator<>);
+            var validators = assembly.GetExportedTypes()
+                .Where(t => !t.IsAbstract && !t.IsGenericTypeDefinition)
+                .Select(t => new
+                {
+                    Interface = t.GetInterfaces().FirstOrDefault(i =>
+                        i.IsGenericType && i.GetGenericTypeDefinition() == validatorType),
+                    Implementation = t
+                })
+                .Where(x => x.Interface != null)
+                .ToList();
+
+            foreach (var validator in validators)
+            {
+                services.AddTransient(validator.Interface, validator.Implementation);
+            }
+
+            return services;
         }
 
         public static void AddSerilogConfiguration(this IServiceCollection services, IConfiguration configurationbuilder)

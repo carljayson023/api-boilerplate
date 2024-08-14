@@ -16,6 +16,7 @@ namespace send.api.Features.WeatherForeCasts
                 s.Response<GetResponse>(201, "Success");
             });
             AllowAnonymous(); // Remove this line to require authentication
+            PreProcessor<ValidationBehavior<CreateRequest>>();
         }
 
         public override async Task HandleAsync(CreateRequest req, CancellationToken ct)
